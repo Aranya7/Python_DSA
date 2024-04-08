@@ -1,0 +1,11 @@
+1. Implementation of all data structures.
+2. Binary Search
+3. BFS:
+        1. For Trees - Both Iterative and Recursive
+        2. For Arrays
+4. DFS:
+        1. For Trees - Both Iterative (Pre-Order) and Recursive (Pre, In, Post)
+        2. For Arrays
+5. LL Reverse
+
+6. Matrix to Array and Array to Matrix: https://chat.openai.com/share/d3b9f94e-45eb-4a7c-83cb-fc57580b7df6

@@ -1,0 +1,14 @@
+1. DSA - Graphs - Day1
+2. DSA - All Implementations, ThingsToRemember.txt, All Questions - Day2
+3. SQL Leetcode - Day3
+4. DSA Leetcode - Day3
+5. Company research, Common Int Questions, Resume - Experience and Projects, Spark Notes - Day4
+
+
+
+Questions to Revisit if time permits:
+rotate_arr_k_times_without_diagonals
+https://leetcode.com/problems/house-robber/ - DP
+https://leetcode.com/problems/climbing-stairs/ - Memoization
+https://leetcode.com/problems/unique-paths/ - Memoization with @cache
+https://leetcode.com/problems/min-cost-climbing-stairs/description/
