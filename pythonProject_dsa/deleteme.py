@@ -1,31 +1,55 @@
-ans=[[1]*i for i in range(1, 5+1)]
-print(ans)
-for i in range(2, len(ans)):
-    for j in range(1, len(ans[i])-1):
-        ans[i][j]=ans[i-1][j-1]+ans[i-1][j]
-print(ans)
+def reversePairs(nums):
+    # BF
+    # count=0
+    # for i in range(len(nums)):
+    #     for j in range(i+1,len(nums)):
+    #         if nums[i]>2*nums[j]:
+    #             count+=1
+    # return count
 
+    def merge_sort(nums, s, e):
+        count = 0
+        if s >= e:
+            return count
+        mid = (s + e) // 2
+        count += merge_sort(nums, s, mid)
+        count += merge_sort(nums, mid + 1, e)
+        count += countrevp(nums, s, mid, e)
+        merge(nums, s, mid, e)
+        return count
 
-class Solution:
-    """
-    Level0: []
-    level1: [1]                  [2]              [3]
-    level2: [1,2]    [1,3]       [2,1] [2,3]      [3,1] [3,2]
-    level3: [1,2,3]  [1,3,2]     [2,1,3][2,3,1]   [3,1,2][3,2,1]
+    def countrevp(nums, s, mid, e):
+        right=mid+1
+        count=0
+        for i in range(s, mid+1):
+            while right<=e and nums[i]>2*nums[right]:
+                right+=1
+            count+=(right-(mid+1))
+        return count
 
-    """
+    def merge(nums, s, mid, e):
+        left = s
+        right = mid + 1
+        ans = []
+        while left <= mid and right <= e:
+            if nums[left] <= nums[right]:
+                ans.append(nums[left])
+                left += 1
+            elif nums[right]<nums[left]:
+                ans.append(nums[right])
+                right += 1
 
-    def permute(self, nums: List[int]) -> List[List[int]]:
-        visited = set()
-        res = []
-        self.backtracking(res, visited, [], nums)
-        return res
+        while left <= mid:
+            ans.append(nums[left])
+            left += 1
+        while right <= e:
+            ans.append(nums[right])
+            right += 1
 
-    def backtracking(self, res, visited, subset, nums):
-        if len(subset) == len(nums):
-            res.append(subset)
-        for i in range(len(nums)):
-            if i not in visited:
-                visited.add(i)
-                self.backtracking(res, visited, subset + [nums[i]], nums)
-                visited.remove(i)
+        for i in range(len(ans)):
+            nums[s + i] = ans[i]
+
+    return merge_sort(nums, 0, len(nums) - 1)
+
+nums=[1,3,2,3,1]
+print(reversePairs(nums))
